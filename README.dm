@@ -23,36 +23,41 @@ and validate financial consistency across transactional tables.
 - `olist_customers_dataset`
 - `olist_order_reviews_dataset`
 
-
+---
 
 ## 📁 SQL Structure
-  sql/
- ├── revenue_validation.sql
- ├── kpi_scorecard.sql
- ├── product_analysis.sql
- └── geo_analysis.sql
 
-  
+sql/
+├── revenue_validation.sql
+├── kpi_scorecard.sql
+├── product_analysis.sql
+└── geo_analysis.sql
+
+
 ---
 
 ## 🔍 Example Analysis: Revenue by Order Status
 
 This analysis compares:
 
-- Item-level total price
-- Freight value
-- Payment value
+- Item-level total price  
+- Freight value  
+- Payment value  
 
 Grouped by order status to understand revenue distribution.
 
-
+---
 
 ## 📈 Tools Used
 
 - SQL Server
 - Tableau (for visualization)
 
+---
 
+## 💰 Revenue Validation Query
+
+```sql
 SELECT 
     o.order_status,
     SUM(ISNULL(i.total_price, 0))   AS total_price,
@@ -81,21 +86,3 @@ ON o.order_id = p.order_id
 
 GROUP BY o.order_status
 ORDER BY total_payment DESC;
-
-
-
----
-
-## 💡 Business Insight Focus
-
-This project demonstrates:
-
-- Multi-table joins
-- Order-level aggregation
-- Revenue validation logic
-- KPI calculation
-- Business-oriented SQL analysis
-
----
-
-👩‍💻 Author: Melody
