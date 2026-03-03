@@ -135,4 +135,24 @@ ORDER BY total_revenue DESC;
 ```
 
 ### Result:
+<p align="center">
+  <img src="images/Payment Method.jpg" width="400">
+</p>
 
+## 🏆 Top 10 Product Categories by Revenue
+```sql
+SELECT TOP 10
+    t.product_category_name_english AS category,
+    SUM(oi.price) AS total_revenue
+FROM olist_order_items_dataset oi
+LEFT JOIN olist_products_dataset p
+    ON oi.product_id = p.product_id
+LEFT JOIN product_category_name_translation t
+    ON p.product_category_name = t.product_category_name
+GROUP BY t.product_category_name_english
+ORDER BY total_revenue DESC;
+```
+### Result:
+<p align="center">
+  <img src="Top 10 Product Categories.jpg" width="400">
+</p
