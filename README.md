@@ -81,7 +81,7 @@ FROM (
 ) t
 GROUP BY OrderStage
 ORDER BY total_payment DESC;
----
+```
 Result:
 
 
