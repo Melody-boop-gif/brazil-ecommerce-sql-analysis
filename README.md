@@ -82,7 +82,37 @@ FROM (
 GROUP BY OrderStage
 ORDER BY total_payment DESC;
 ```
-Result:
+### Result:
+![Order Status](images/Order%20Status.jpg)
+
+
+
+## 📈 Rapid Revenue Growth from 2016 to  2018
+```sql
+SELECT 
+    CONCAT(
+        YEAR(o.order_purchase_timestamp),
+        ' Q',
+        DATEPART(QUARTER, o.order_purchase_timestamp)
+    ) AS order_quarter,
+    
+    ROUND(SUM(p.payment_value), 2) AS quarterly_revenue
+
+FROM olist_orders_dataset o
+
+JOIN olist_order_payments_dataset p
+    ON o.order_id = p.order_id
+
+WHERE o.order_status = 'delivered'
+
+GROUP BY 
+    YEAR(o.order_purchase_timestamp),
+    DATEPART(QUARTER, o.order_purchase_timestamp)
+
+ORDER BY 
+    YEAR(o.order_purchase_timestamp),
+    DATEPART(QUARTER, o.order_purchase_timestamp);
+```
 
 
 
