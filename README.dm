@@ -52,16 +52,14 @@ Grouped by order status to understand revenue distribution.
 - SQL Server
 - Tableau (for visualization)
 
-````markdown
-## 💰 Revenue Validation by Order Status
 
-```sql
 SELECT 
     o.order_status,
     SUM(ISNULL(i.total_price, 0))   AS total_price,
     SUM(ISNULL(i.total_freight, 0)) AS total_freight,
     SUM(ISNULL(p.total_payment, 0)) AS total_payment
 FROM olist_orders_dataset o
+
 LEFT JOIN (
     SELECT 
         order_id,
@@ -69,17 +67,20 @@ LEFT JOIN (
         SUM(freight_value) AS total_freight
     FROM olist_order_items_dataset
     GROUP BY order_id
-) i ON o.order_id = i.order_id
+) i 
+ON o.order_id = i.order_id
+
 LEFT JOIN (
     SELECT 
         order_id,
         SUM(payment_value) AS total_payment
     FROM olist_order_payments_dataset
     GROUP BY order_id
-) p ON o.order_id = p.order_id
+) p 
+ON o.order_id = p.order_id
+
 GROUP BY o.order_status
 ORDER BY total_payment DESC;
-```
 
 
 
