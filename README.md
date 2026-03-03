@@ -154,5 +154,68 @@ ORDER BY total_revenue DESC;
 ```
 ### Result:
 <p align="center">
-  <img src="Top 10 Product Categories.jpg" width="400">
-</p
+  <img src="images/Top%2010%20Product%20Categories.jpg" width="750">
+</p>
+
+
+```sql
+SELECT 
+    c.customer_state,
+    c.customer_city,
+    g.avg_lat,
+    g.avg_lng,
+    COUNT(DISTINCT o.order_id) AS total_orders,
+    SUM(p.payment_value) AS total_revenue
+
+FROM olist_orders_dataset o
+
+LEFT JOIN olist_customers_dataset c
+    ON o.customer_id = c.customer_id
+
+LEFT JOIN olist_order_payments_dataset p
+    ON o.order_id = p.order_id
+
+LEFT JOIN geolocation_clean g
+    ON c.customer_zip_code_prefix = g.geolocation_zip_code_prefix
+
+WHERE o.order_status = 'delivered'
+
+GROUP BY 
+    c.customer_state,
+    c.customer_city,
+    g.avg_lat,
+    g.avg_lng
+
+ORDER BY total_revenue DESC;
+```
+
+```sql
+SELECT 
+    c.customer_state,
+    c.customer_city,
+    g.avg_lat,
+    g.avg_lng,
+    COUNT(DISTINCT o.order_id) AS total_orders,
+    SUM(p.payment_value) AS total_revenue
+
+FROM olist_orders_dataset o
+
+LEFT JOIN olist_customers_dataset c
+    ON o.customer_id = c.customer_id
+
+LEFT JOIN olist_order_payments_dataset p
+    ON o.order_id = p.order_id
+
+LEFT JOIN geolocation_clean g
+    ON c.customer_zip_code_prefix = g.geolocation_zip_code_prefix
+
+WHERE o.order_status = 'delivered'
+
+GROUP BY 
+    c.customer_state,
+    c.customer_city,
+    g.avg_lat,
+    g.avg_lng
+
+ORDER BY total_revenue DESC;
+```
