@@ -1,4 +1,4 @@
-# 🇧🇷 Brazil E-Commerce SQL Analysis
+# Brazil E-Commerce SQL Analysis
 
 ## 📌 Project Overview
 This project analyzes the Brazilian e-commerce dataset using SQL.  
