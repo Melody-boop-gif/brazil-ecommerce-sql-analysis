@@ -114,6 +114,25 @@ ORDER BY
     DATEPART(QUARTER, o.order_purchase_timestamp);
 ```
 ### Result:
-![Revenue Growth](images/Revenue%20Growth%20from%202017%20to%20Early%202018.jpg)
+<p align="center">
+  <img src="images/revenue_growth_2017_2018.jpg" width="600">
+</p>
 
+
+## 💳 Revenue Distribution by Payment Method
+```sql
+SELECT 
+    payment_type,
+    SUM(payment_value) AS total_revenue,
+    ROUND(
+        SUM(payment_value) * 100.0 
+        / SUM(SUM(payment_value)) OVER (), 
+        2
+    ) AS revenue_pct
+FROM olist_order_payments_dataset
+GROUP BY payment_type
+ORDER BY total_revenue DESC;
+```
+
+### Result:
 
