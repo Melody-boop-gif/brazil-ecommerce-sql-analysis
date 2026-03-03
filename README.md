@@ -59,38 +59,31 @@ Grouped by order status to understand revenue distribution.
 
 ```sql
 SELECT 
-    o.order_status,
-    SUM(ISNULL(i.total_price, 0))   AS total_price,
-    SUM(ISNULL(i.total_freight, 0)) AS total_freight,
-    SUM(ISNULL(p.total_payment, 0)) AS total_payment
-FROM olist_orders_dataset o
-
-LEFT JOIN (
+    OrderStage,
+    ROUND(SUM(payment_value), 0) AS total_payment
+FROM (
     SELECT 
-        order_id,
-        SUM(price) AS total_price,
-        SUM(freight_value) AS total_freight
-    FROM olist_order_items_dataset
-    GROUP BY order_id
-) i 
-ON o.order_id = i.order_id
-
-LEFT JOIN (
-    SELECT 
-        order_id,
-        SUM(payment_value) AS total_payment
-    FROM olist_order_payments_dataset
-    GROUP BY order_id
-) p 
-ON o.order_id = p.order_id
-
-GROUP BY o.order_status
+        CASE 
+            WHEN o.order_status IN ('created','approved','invoiced','processing')
+                THEN 'Pending'
+            WHEN o.order_status = 'shipped'
+                THEN 'Shipped'
+            WHEN o.order_status = 'delivered'
+                THEN 'Completed'
+            WHEN o.order_status IN ('canceled','unavailable')
+                THEN 'Failed'
+            ELSE 'Other'
+        END AS OrderStage,
+        p.payment_value
+    FROM olist_orders_dataset o
+    LEFT JOIN olist_order_payments_dataset p
+        ON o.order_id = p.order_id
+) t
+GROUP BY OrderStage
 ORDER BY total_payment DESC;
 ---
+Result:
 
 
-```
-```sql
-SELECT 1;
-```
-```
+
+
