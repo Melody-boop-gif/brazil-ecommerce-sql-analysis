@@ -113,7 +113,7 @@ ORDER BY
     YEAR(o.order_purchase_timestamp),
     DATEPART(QUARTER, o.order_purchase_timestamp);
 ```
-
-
+### Result:
+![Revenue Growth](images/Revenue%20Growth%20from%202017%20to%20Early%202018.jpg)
 
 
