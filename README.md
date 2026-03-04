@@ -15,6 +15,7 @@ The goal is to answer:
 
 ## 🗂 Dataset Overview
 ##### Download link: https://drive.google.com/file/d/1a_WBLxE_40Br-HllAeeJE6v7XpfoHIHT/view?usp=sharing
+##### Tableau link: https://public.tableau.com/app/profile/melody.tsai2764/viz/E-commercedataset_17726028315450/Dashboard1?publish=yes
 
 - `olist_orders_dataset`
 - `olist_order_items_dataset`
@@ -29,20 +30,8 @@ The goal is to answer:
 
 ## 💰 Revenue by Order Status
 
-This analysis compares:
 
-- Item-level total price  
 
-Grouped by order status to understand revenue distribution.
-
----
-
-## 📈 Tools Used
-
-- SQL Server
-- Tableau (for visualization)
-
----
 
 ```sql
 SELECT 
@@ -80,6 +69,8 @@ ORDER BY total_payment DESC;
 
 - Operational efficiency directly impacts realized revenue.
   
+
+---
 
 ## 📈 Quarterly Revenue Growth Trend
 ```sql
@@ -121,6 +112,8 @@ ORDER BY
 - The decline in Q3 2018 is due to partial dataset coverage, not necessarily business contraction.
   
 
+---
+
 ## 💳 Revenue Distribution by Payment Method
 ```sql
 SELECT 
@@ -148,7 +141,10 @@ ORDER BY total_revenue DESC;
 - Strong dependency on a single payment method increases operational and financial risk.
 
 - Alternative payment channels remain underutilized.
-  
+
+
+---
+
 
 ## 🏆 Top 10 Product Categories by Revenue
 ```sql
@@ -176,7 +172,10 @@ ORDER BY total_revenue DESC;
 
 - Category concentration may indicate strategic focus areas or dependency risk.
 
-- 
+
+
+---
+
   
 ## 🗺 Geographic Distribution of Delivered Orders and Revenue
 ```sql
@@ -223,3 +222,54 @@ ORDER BY total_revenue DESC;
 - Large metropolitan areas show significantly higher transaction density compared to other regions.
 
 - The geographic concentration suggests strong demand clusters in urban economic centers.
+
+
+---
+
+
+
+## 📊 Overall Business Insights
+
+1. Revenue is heavily dependent on successfully delivered orders.
+
+2. Business growth accelerated significantly during 2017–2018.
+
+3. Payment revenue is highly concentrated in credit cards.
+
+4. A small group of product categories drives a disproportionate share of revenue.
+   
+5. Order activity and revenue are geographically concentrated in Southeast Brazil, particularly in São Paulo and Rio de Janeiro.
+
+
+## 🚀 Business Recommendations
+
+1. Reduce order cancellation and failure rates to prevent revenue leakage.
+
+2. Diversify payment adoption to reduce credit card dependency risk.
+
+3. Invest in high-performing product categories while testing adjacent expansion.
+
+4. Monitor revenue trends with complete quarterly reporting before drawing conclusions on declines.
+
+
+## 🧠 Technical Skills Demonstrated
+
+- Complex JOIN operations across multiple datasets
+
+- Aggregation and revenue calculation
+
+- CASE-based order stage classification
+
+- Time-series grouping using DATEPART
+
+- Revenue ranking using TOP
+
+- Business-focused data storytelling
+
+
+
+## 📎 Tools Used
+
+- SQL Server
+
+- Tableau (for visualization)
