@@ -1,48 +1,37 @@
-# Brazil E-Commerce SQL Analysis
+# 🛒 Brazil E-Commerce Revenue Analysis
 
 ## 📌 Project Overview
 This project analyzes the Brazilian e-commerce dataset using SQL.  
-The objective is to explore revenue patterns, order status performance, 
-and validate financial consistency across transactional tables.
+Performance across order stages, payment methods, time trends, and product categories to identify key revenue drivers and potential business risks.
+
+The goal is to answer:
+
+- Which order stages contribute most to revenue?
+- How has revenue evolved over time?
+- Is the business overly dependent on specific payment methods?
+- Which product categories drive the highest revenue?
 
 ---
 
-## 📊 Key Business Questions
-
-1. How does revenue differ by order status?
-2. Is item-level revenue consistent with payment-level transactions?
-3. What business insights can be derived from order lifecycle data?
-
----
-
-## 🗂 Dataset Tables Used
+## 🗂 Dataset Overview
+##### Download link: https://drive.google.com/file/d/1a_WBLxE_40Br-HllAeeJE6v7XpfoHIHT/view?usp=sharing
 
 - `olist_orders_dataset`
 - `olist_order_items_dataset`
 - `olist_order_payments_dataset`
 - `olist_customers_dataset`
 - `olist_order_reviews_dataset`
-
----
-
-## 📁 SQL Structure
-
-sql/
-├── revenue_validation.sql
-├── kpi_scorecard.sql
-├── product_analysis.sql
-└── geo_analysis.sql
+- `olist_products_dataset`
+- `olist_geolocation_dataset`
 
 
 ---
 
-## 🔍 Example Analysis: Revenue by Order Status
+## 💰 Revenue by Order Status
 
 This analysis compares:
 
 - Item-level total price  
-- Freight value  
-- Payment value  
 
 Grouped by order status to understand revenue distribution.
 
@@ -54,8 +43,6 @@ Grouped by order status to understand revenue distribution.
 - Tableau (for visualization)
 
 ---
-
-## 💰 Revenue Validation Query
 
 ```sql
 SELECT 
@@ -85,7 +72,13 @@ ORDER BY total_payment DESC;
 ### Result:
 ![Order Status](images/Order%20Status.jpg)
 
+### 🔎 Key Insight
 
+- Completed (delivered) orders contribute the overwhelming majority of revenue.
+
+- Failed and pending orders represent potential revenue leakage.
+
+- Operational efficiency directly impacts realized revenue.
 
 ## 📈 Rapid Revenue Growth from 2016 to  2018
 ```sql
