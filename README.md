@@ -211,7 +211,7 @@ ORDER BY total_revenue DESC;
 ```
 ### Result:
 <p align="center">
-  <img src="images/geolocation.jpg" width="750">
+  <img src="images/geolocation..jpg" width="750">
 </p>
 
 ### 🔎 Key Insights
