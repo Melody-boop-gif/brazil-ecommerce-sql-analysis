@@ -79,8 +79,9 @@ ORDER BY total_payment DESC;
 - Failed and pending orders represent potential revenue leakage.
 
 - Operational efficiency directly impacts realized revenue.
+  
 
-## 📈 Rapid Revenue Growth from 2016 to  2018
+## 📈 Quarterly Revenue Growth Trend
 ```sql
 SELECT 
     CONCAT(
@@ -111,6 +112,14 @@ ORDER BY
   <img src="images/revenue_growth_2017_2018.jpg" width="600">
 </p>
 
+### 🔎 Key Insight
+
+- Revenue increased steadily from 2017 to early 2018.
+
+- Peak revenue occurred in Q2 2018.
+
+- The decline in Q3 2018 is due to partial dataset coverage, not necessarily business contraction.
+  
 
 ## 💳 Revenue Distribution by Payment Method
 ```sql
@@ -132,6 +141,15 @@ ORDER BY total_revenue DESC;
   <img src="images/Payment Method.jpg" width="400">
 </p>
 
+### 🔎 Key Insight
+
+- Credit cards account for ~78% of total revenue.
+
+- Strong dependency on a single payment method increases operational and financial risk.
+
+- Alternative payment channels remain underutilized.
+  
+
 ## 🏆 Top 10 Product Categories by Revenue
 ```sql
 SELECT TOP 10
@@ -150,7 +168,17 @@ ORDER BY total_revenue DESC;
   <img src="images/Top%2010%20Product%20Categories.jpg" width="750">
 </p>
 
+### 🔎 Key Insight
 
+- Health & Beauty and Watches & Gifts generate the highest revenue.
+
+- Revenue is moderately concentrated among top categories.
+
+- Category concentration may indicate strategic focus areas or dependency risk.
+
+- 
+  
+## 🗺 Geographic Distribution of Delivered Orders and Revenue
 ```sql
 SELECT 
     c.customer_state,
@@ -185,3 +213,13 @@ ORDER BY total_revenue DESC;
 <p align="center">
   <img src="images/geolocation.jpg" width="750">
 </p>
+
+### 🔎 Key Insights
+
+- Order activity is highly concentrated in Southeast Brazil, particularly around major economic regions.
+
+- Cities such as São Paulo and Rio de Janeiro generate the largest share of delivered orders and revenue.
+
+- Large metropolitan areas show significantly higher transaction density compared to other regions.
+
+- The geographic concentration suggests strong demand clusters in urban economic centers.
